@@ -15,3 +15,9 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- task: Docker@2
+  displayName: Build an image
+  inputs:
+    repository: 'pipelines-javascript-docker'
+    command: build
+    Dockerfile: app/Dockerfile
